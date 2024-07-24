@@ -1,0 +1,69 @@
+find the presence of element in the rotated array but the array contains duplicate elements
+
+here in case
+1 0 1 1 1 
+the arr[l]=arr[m]=arr[r]
+
+then trim the array of duplicate elements 
+now use of "continue" is here 
+
+class Solution {
+public:
+
+
+    bool search(vector<int>& nums, int t) {
+        int l=0;
+        int r=nums.size()-1;
+       while(l<=r){
+
+        int m=(l+r)/2;
+cout<<l<<m<<r<<endl;
+        if(nums[m]==t){
+            return true;
+        }
+        if(nums[l]==nums[m] && nums[m]==nums[r] ){
+            l=l+1;
+            r=r-1;
+            continue;
+        }
+        // left sorted
+        if(nums[m]>=nums[l] ){
+            if(t<nums[m] && t>=nums[l]){
+            r=m-1;
+
+            }
+            else{
+            l=m+1;
+
+            }
+        }
+
+        // right sorted
+
+
+
+        else{
+
+   if(t<=nums[r] && t>nums[m]){
+            // r=m-1;
+            l=m+1;
+
+            }
+            else{
+            r=m-1;
+
+            }
+     
+
+        }
+
+       
+
+       }
+return false;
+
+
+
+
+         }
+    };
