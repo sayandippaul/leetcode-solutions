@@ -1,0 +1,49 @@
+solution using recursion 
+class Solution {
+public:
+    int find(vector<int>& nums,int l,int r){
+        int m=(l+r)/2;
+        cout<<l<<r<<" mid"<<m<<endl;
+        if(l==r){
+            return nums[r];
+        }
+        int a=find(nums,l,m);
+        int b=find(nums,m+1,r);
+        cout<<a<<b<<min(a,b)<<endl;
+        return min(a,b);
+    }
+
+    int findMin(vector<int>& nums) {
+        return find(nums,0,nums.size()-1);
+    }
+};
+
+
+2nd solution
+
+
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int mi =999999;
+        
+            int l=0;
+            int r=nums.size()-1;
+        while(l<=r){
+            int m=l+(r-l)/2;
+            if(nums[l]<=nums[m]){
+                // left sorted
+                mi=min(mi,nums[l]);
+                l=m+1;
+
+            }
+            else{
+                // right sorted
+                mi=min(mi,nums[m]);
+                r=m-1;
+
+            }
+        }
+        return mi;
+    }
+};
