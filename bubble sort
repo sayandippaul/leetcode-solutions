@@ -1,0 +1,12 @@
+oid bubbleSort(int arr[], int n) {
+        // Your code here
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]>arr[j]){
+                    int t=arr[j];
+                    arr[j]=arr[i];
+                    arr[i]=t;
+                }
+            }
+        }
+    }
