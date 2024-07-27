@@ -1,0 +1,24 @@
+  long long int floorSqrt(long long int x) 
+    {
+        // Your code goes here 
+        long long int r=x,l=1,a=1;
+        if(x==0 || x==1) return x;
+        while(l<=r){
+            // cout<<l<<r<<endl;
+            long long int m=l+(r-l)/2;
+            // if(m%2==1) m=m+1;
+            if(m*m==x){
+                return m;
+            }
+            if(m*m>x){
+                // shift left
+            // a=m;    
+                r=m-1;
+            }
+            else{
+               l=m+1; 
+            }
+        }
+        return r;
+       
+    }
