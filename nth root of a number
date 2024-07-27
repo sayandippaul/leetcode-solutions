@@ -1,0 +1,19 @@
+int NthRoot(int p, int n)
+	{
+	    // Code here.
+	    int l=1,r=n;
+	    
+	    while(l<=r){
+	        int m=(l+r)/2;
+	        if(pow(m,p)==n){
+	            return m;
+	        }
+	        if(pow(m,p)>n){
+	            r=m-1;
+	        }
+	        else{
+	            l=m+1;
+	        }
+	    }
+	    return -1;
+	}
