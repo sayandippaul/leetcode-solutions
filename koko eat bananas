@@ -1,0 +1,51 @@
+class Solution {
+public:
+     int findmax(vector<int>& piles){
+        int a=piles[0];
+        for(int i=0;i<piles.size();i++){
+            a=max(a,piles[i]);
+        }
+        return a;
+     }
+    long long  int totalhours(vector<int>& piles,int m){
+        long long int h=0;
+        if(piles[0]%m!=0){
+                h=h+piles[0]/m+1;
+            }
+            else{
+                h=h+piles[0]/m;
+
+            }
+        for(int i=1;i<piles.size();i++){
+            if(piles[i]%m!=0){
+                h=h+piles[i]/m+1;
+            }
+            else{
+                h=h+piles[i]/m;
+
+            }
+        }
+        return h;
+     }
+    int minEatingSpeed(vector<int>& piles, int rh) {
+        int l=1,r=findmax(piles),a=0;
+        while(l<=r){
+            int mid=(l+r)/2;
+
+            long long int hours=totalhours(piles,mid);
+            cout<<hours<<" "<<l<<" "<<r<<" "<<mid<<endl;
+            if(hours==rh){
+                a=mid;
+                // return mid;
+            }
+            if(hours>rh){
+                l=mid+1;
+            }
+            else{
+                r=mid-1;
+            }
+        }
+        cout<<l;
+        return l;
+    }
+};
