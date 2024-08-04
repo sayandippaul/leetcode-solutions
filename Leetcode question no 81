@@ -1,69 +1,82 @@
-find the presence of element in the rotated array but the array contains duplicate elements
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int c=0,l=INT_MAX;
+        // cout<<;
+        for(int i=0;i<strs.size();i++){
+            if(strs[i][0]!=strs[0][0]){
+                c=1;
+            }
+            int q=strs[0].length();
+            l=min(l,q);
+        }
+        
+        if(c==1) return "";
+        int j=0;
+        string s="";
+        
+for(j=0;j<l;j++){
 
-here in case
-1 0 1 1 1 
-the arr[l]=arr[m]=arr[r]
 
-then trim the array of duplicate elements 
-now use of "continue" is here 
+            char p=strs[0][j];
+        for(int i=0;i<strs.size();i++){
+           if(p!=strs[i][j]){
+            cout<<"hitt"<<s<<endl;
+            goto l;
+            break;
+            return s;
+           }
+           if(i==strs.size()-1){
+            s=s+strs[i][j]; 
+        //    j++;
+           }
+           cout<<j<<" "<<s<<endl;
+
+        
+
+
+
+
+        }
+
+
+
+}
+
+
+l:
+
+    return s;
+    }
+};
+
+
+
+
+2nd soln
+
+
+
+
+
+
+
 
 class Solution {
 public:
-
-
-    bool search(vector<int>& nums, int t) {
-        int l=0;
-        int r=nums.size()-1;
-       while(l<=r){
-
-        int m=(l+r)/2;
-cout<<l<<m<<r<<endl;
-        if(nums[m]==t){
-            return true;
-        }
-        if(nums[l]==nums[m] && nums[m]==nums[r] ){
-            l=l+1;
-            r=r-1;
-            continue;
-        }
-        // left sorted
-        if(nums[m]>=nums[l] ){
-            if(t<nums[m] && t>=nums[l]){
-            r=m-1;
-
+    string longestCommonPrefix(vector<string>& strs) {
+        // strs.sort();
+           sort(strs.begin(), strs.end()); 
+        string s="";
+        int n=strs.size();
+        for(int i=0;i<strs[0].length();i++){
+            if(strs[0][i]!=strs[n-1][i]){
+                break;
             }
             else{
-            l=m+1;
-
+                s=s+strs[0][i];
             }
         }
-
-        // right sorted
-
-
-
-        else{
-
-   if(t<=nums[r] && t>nums[m]){
-            // r=m-1;
-            l=m+1;
-
-            }
-            else{
-            r=m-1;
-
-            }
-     
-
-        }
-
-       
-
-       }
-return false;
-
-
-
-
-         }
-    };
+        return s;
+    }
+};
